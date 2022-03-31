@@ -84,6 +84,10 @@ mixin Piloted {
   }
 }
 
+class PilotedCraft extends Spacecraft with Piloted {
+  PilotedCraft(String name, DateTime? launchDate) : super(name, launchDate);
+}
+
 void main(List<String> args) async {
   //变量
   variables();
@@ -96,4 +100,10 @@ void main(List<String> args) async {
   var voyager = Spacecraft("Voyager Ⅰ", DateTime(1977, 9, 5));
   voyager.describe();
   var voyager3 = Spacecraft.unlaunched('Voyager Ⅲ');
+  //扩展类的调用
+  var voyager4 = Orbiter("Voyager Ⅳ", DateTime(1977, 9, 5), 3000);
+  voyager4.describe();
+  //Mixins
+  var voyager5 = PilotedCraft("Voyager Ⅴ", DateTime(2000, 9, 5));
+  voyager5.describeCrew();
 }
